@@ -12,6 +12,7 @@ using namespace std;
 
 int main(int argc, char **argv){
 	
+
 	int port;
 	int sock = -1;
 	struct sockaddr_in address;
@@ -19,7 +20,7 @@ int main(int argc, char **argv){
 	int len;
 	char message[1024];
 	
-	if(argc != 2){
+	if(argc != 3){
 
 		printf("Usage: %s port\n", argv[0]);
 		return -1;
@@ -40,7 +41,7 @@ int main(int argc, char **argv){
 	//connect to server
 	address.sin_family = AF_INET;
 	address.sin_port = htons(port);
-	host = gethostbyname("127.0.0.1");
+	host = gethostbyname(argv[2]);
 	if(!host){
 
 		fprintf(stderr, "%s: error: unknown host %s\n", argv[0], argv[1]);
